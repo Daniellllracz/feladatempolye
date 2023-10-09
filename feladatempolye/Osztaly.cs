@@ -18,22 +18,25 @@ namespace feladatempolye
         public double Salery { get; set; }
 
 
-        public Osztaly(string sor, string name, int age, string city, string department, string position, string gender, string marielStatus, int salery)
+        public Osztaly(string sor)
         {
             string[] szortir = sor.Split(';');
-            Name = name;
-            Age = age;
-            City = city;
-            Department = department;
-            Position = position;
-            Gender = gender;
-            MarielStatus = marielStatus;
-            Salery = salery;
+            Name = szortir[0];
+            Age = int.Parse( szortir[1]);
+            City = szortir[2];
+            Department = szortir[3];
+            Position = szortir[4];
+            Gender = szortir[5];
+            MarielStatus = szortir[6];
+            Salery = double.Parse(szortir[7]);
 
         }
-        public override string ToString() 
-        {
-            return $"{Name}név | {Age}életkor  | {City}Város  | {Department}department  | {Position}pozícó | {Gender}nem | {MarielStatus} családi állapott | {Salery} bevétel";
-        }
+
+
+        public override string ToString() => $"{Name}név | {Age}életkor  | {City}Város  | {Department}department  | {Position}pozícó | {Gender}nem | {MarielStatus} családi állapott | {Salery} bevétel";
+        
     }
 }
+
+
+

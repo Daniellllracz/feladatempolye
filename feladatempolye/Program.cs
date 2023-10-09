@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace feladatempolye
 {
@@ -26,19 +27,28 @@ namespace feladatempolye
             using var sr = new StreamReader(
                 path: @"..\..\..\src\Adatok.txt");
             _ = sr.ReadLine();
-            //7.A virtuális metódus segítségével írd ki az összes adatot  
-            return base.ToString();
+            while (!sr.EndOfStream) adatok.Add(new Osztaly(sr.ReadLine()));
+            foreach (var x in adatok)
+            {
+                Console.WriteLine(x);
+            }
 
 
-        //A következő feladatokat a program osztályban elhelyezett statikus metódusokkal oldd meg.
-        //(Aki szeret kísérletezni, teheti ezeket a metódusokat egy újabb osztályba.) Egyes feladatokat meg
-        //lehet oldani LINQ-val is, de ha belefér az időbe, kódoljátok le hagyományosan is.Ha van olyan feladat,
-        //ami nem egyértelmű, pl.az, hogyan kell kiírni, ott rád van bízva a megoldás.
+            //7.A virtuális metódus segítségével írd ki az összes adatot 
+            //////Console.WriteLine($"\n {}");
+
+
+            //A következő feladatokat a program osztályban elhelyezett statikus metódusokkal oldd meg.
+            //(Aki szeret kísérletezni, teheti ezeket a metódusokat egy újabb osztályba.) Egyes feladatokat meg
+            //lehet oldani LINQ-val is, de ha belefér az időbe, kódoljátok le hagyományosan is.Ha van olyan feladat,
+            //ami nem egyértelmű, pl.az, hogyan kell kiírni, ott rád van bízva a megoldás.
 
             //8.Függvény segítségével írd ki az életkorok átlagát.
+            double avg = adatok.Average(n => n.Age);
+            Console.WriteLine(avg);
 
-
-        //9.Függvény segítségével írd ki azon személyek számát, akiknek a városa 'Budapest'.
+            //9.Függvény segítségével írd ki azon személyek számát, akiknek a városa 'Budapest'.
+            string v = City;
 
         //10.Függvény segítségével keresd ki, majd a virtuális metódus segítségével írd ki a legidősebb személy adatait.
 
@@ -57,6 +67,7 @@ namespace feladatempolye
         //17.Készíts a főprogramban egy olyan listát, amiben csak a developer beosztásúak találhatók, minden tulajdonságukkal.Hívd meg újra a főprogramból az előző függvényt, de most ez az új lista legyen a paramétere. A főprogram írja ki a developerek átlagfizetését.
 
         //18.Számold ki a férfi és női alkalmazottak átlagfizetését tetszőleges módszerrel.
+            Console.ReadKey(true);
     }
     }
 }
